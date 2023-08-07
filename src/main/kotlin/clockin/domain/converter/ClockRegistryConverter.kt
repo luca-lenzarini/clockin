@@ -3,6 +3,7 @@ package clockin.domain.converter
 import clockin.adapter.input.api.request.ClockRegisterRequest
 import clockin.adapter.output.entity.ClockRegistryEntity
 import clockin.domain.model.ClockRegistry
+import clockin.domain.model.Location
 import clockin.domain.model.enum.ClockRegistryType
 
 fun ClockRegistry.toEntity() = ClockRegistryEntity(
@@ -18,7 +19,7 @@ fun ClockRegistry.toEntity() = ClockRegistryEntity(
 fun ClockRegisterRequest.toDomain() = ClockRegistry(
     type = ClockRegistryType.valueOf(this.type),
     userId = this.userId,
-    location = ClockRegistry.Location(
+    location = Location(
         longitude =  this.location.longitude,
         latitude = this.location.latitude
     )

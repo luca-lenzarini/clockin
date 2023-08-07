@@ -13,9 +13,4 @@ data class ClockRegistry(
     var date: LocalDate? = null,
     var time: LocalTime? = null,
     val createdAt: LocalDateTime? = null
-) {
-    data class Location(
-        val longitude: Long,
-        val latitude: Long
-    )
-}
+)

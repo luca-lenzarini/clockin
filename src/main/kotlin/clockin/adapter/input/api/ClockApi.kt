@@ -1,19 +1,25 @@
 package clockin.adapter.input.api
 
+import clockin.adapter.input.api.controller.ClockController
 import clockin.adapter.input.api.request.ClockRegisterRequest
+import clockin.domain.converter.toDomain
 import clockin.domain.model.ClockRegistry
-import org.springframework.format.annotation.DateTimeFormat
-import org.springframework.web.bind.annotation.*
+import clockin.service.usecase.FindRegistriesByDateUseCase
+import clockin.service.usecase.RegisterClockUseCase
+import org.springframework.stereotype.Service
 import java.time.LocalDate
 
-@RestController
-@RequestMapping("/api/clock")
-interface ClockApi {
-    @PostMapping
-    fun registerClock(@RequestBody clockRegisterRequest: ClockRegisterRequest): ClockRegistry
+@Service
+class ClockApi(
+    private val registerClockUseCase: RegisterClockUseCase,
+    private val findRegistriesByDateUseCase: FindRegistriesByDateUseCase
+): ClockController {
 
-    @GetMapping
-    fun getClockRegistry(
-        @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy") date: LocalDate
-    ): List<ClockRegistry>
+    override fun registerClock(clockRegisterRequest: ClockRegisterRequest): ClockRegistry {
+        return registerClockUseCase.execute(clockRegisterRequest.toDomain())
+    }
+
+    override fun getClockRegistry(date: LocalDate): List<ClockRegistry> {
+        return findRegistriesByDateUseCase.execute(date)
+    }
 }

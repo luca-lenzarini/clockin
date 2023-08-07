@@ -1,6 +1,6 @@
 package clockin.domain.model.enum
 
 enum class ClockRegistryType {
-    IN,
-    OUT
+    CLOCK_IN,
+    CLOCK_OUT
 }
