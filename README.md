@@ -2,22 +2,22 @@
 Simple Clock In application; 
 
 
-### - Run docker-compose
+### Run docker-compose
 ```
 docker-compose up
 ```
 
-### - Build project 
+### Build project 
 ```
 gradlew clean build 
 ```
 
-### - Build project
+### Build project
 ```
 gradlew clean build 
 ```
 
-### - Run project application and docker-compose
+### Run project application and docker-compose
 ```
 gradlew clean build & docker-compose up --rm 
 ```
