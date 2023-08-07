@@ -1,0 +1,19 @@
+version: '3.4'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'clockin_db'
+      MYSQL_USER: 'clockin'
+      MYSQL_PASSWORD: 'pppwwwddd'
+      MYSQL_ROOT_PASSWORD: 'toor'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - db-volume:/var/lib/mysql
+
+volumes:
+  db-volume:
